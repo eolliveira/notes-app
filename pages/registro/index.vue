@@ -4,7 +4,7 @@
       <div class="col-md-7 d-flex vh-100 justify-content-center">
         <div class="col-md-5 align-self-center">
           <h1 class="text-center mb-5">Notes App</h1>
-          <p class="text-center">Cadastre-se: </p>
+          <p>Informe seus Dados: </p>
 
           <b-form @submit.prevent="cadastrar">
 
