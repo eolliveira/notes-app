@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="text-center">
+      <b-button to="nota/new" variant="dark" size="lg" class="my-5">Nova Nota</b-button>
+    </div>
       <div class="container">
         <p v-if="$fetchState.pending">Carregando...</p>
         <p v-else-if="$fetchState.error">Ocorreu um erro :(</p>
