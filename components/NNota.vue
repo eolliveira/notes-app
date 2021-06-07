@@ -28,14 +28,7 @@
           v-model="this.nota.checklists"
         ></n-checklist>
 
-        <b-input-group>
-          <b-form-tags
-            class="bg-warning border-0 text-dark"
-            tag-variant="dark"
-            placeholder="Adicione tags"
-            v-model="nota.tags"
-          ></b-form-tags>
-        </b-input-group>
+        <n-tag></n-tag>
 
         <b-button
           type="button"
@@ -50,7 +43,9 @@
 </template>
 
 <script>
+import NTags from './NTag.vue';
 export default {
+  components: { NTags },
   name: "n-nota",
   props: {
     id: [Number, String]
