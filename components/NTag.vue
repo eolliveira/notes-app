@@ -4,7 +4,7 @@
       class="bg-warning border-0 text-dark"
       tag-variant="dark"
       placeholder="Adicione tags"
-
+      v-model="descricao"
     >
     </b-form-tags>
   </b-input-group>
@@ -14,7 +14,11 @@
 export default {
   name: "n-tag",
   props: {
-
+    descricao: {
+      type: [String, Array],
+      default: null,
+      required: true
+    }
   }
 }
 </script>

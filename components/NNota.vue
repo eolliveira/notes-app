@@ -28,7 +28,9 @@
           v-model="this.nota.checklists"
         ></n-checklist>
 
-        <n-tag></n-tag>
+        <n-tag
+          descricao="this.nota.tags.descricao"
+        ></n-tag>
 
         <b-button
           type="button"
