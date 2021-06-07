@@ -1,42 +1,57 @@
 <template>
-  <b-input-group class="mb-2">
-    <b-input-group-prepend is-text>
-      <b-form-checkbox
-        :value="1"
-        :unchecked-value="0"
-        class="mr-n2"
-        v-model="concluida"
-      />
-    </b-input-group-prepend>
-    <b-form-input
-      placeholder="Novo Item"
-      class="text-dark border-0"
-      :class="{ 'concluida': concluida == 1 }"
-      v-model="descricao"
-    />
-  </b-input-group>
+  <div>
+    <ul class="list-unstyled">
+      <li v-for="(item, index) of value" :key="index">
+        <n-checklist-item v-model="value[index]"></n-checklist-item>
+      </li>
+      <li>
+        <n-checklist-item
+          v-model="checklist"
+          @itemConfirmado="adicionar()"
+        ></n-checklist-item>
+      </li>
+    </ul>
+
+    <p class="text-muted">
+      <small>{{ mensagemNumeroItens }} </small>
+    </p>
+  </div>
 </template>
 
 <script>
 export default {
   name: "n-checklist",
   props: {
-    concluida: {
-      type: [Number, Boolean ],
-      default: 0,
-      require: true
+    value: Array
+  },
+  data() {
+    return {
+      checklist: {
+        descricao: null,
+        concluida: 0
+      }
+    };
+  },
+  computed: {
+    numeroItens() {
+      return this.value.length;
     },
-    descricao: {
-      type: String,
-      default: null
+    mensagemNumeroItens() {
+      return this.value.length > 1
+        ? `${this.numeroItens} itens adicionados`
+        : `${this.numeroItens} item adicionado`;
+    }
+  },
+  methods: {
+    adicionar() {
+      this.value.push(this.checklist);
+      this.checklist = {
+        descricao: null,
+        concluida: 0
+      };
     }
   }
 };
 </script>
 
-<style scoped>
-.concluida {
-  text-decoration: line-through;
-}
-</style>
-
+<style></style>

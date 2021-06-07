@@ -8,7 +8,7 @@
         <p v-else-if="$fetchState.error">Ocorreu um erro :(</p>
         <div v-else class="row">
           <div v-for="nota of notas" :key="nota.id" class="col-md-3">
-            <div class="card bg-warning my-3">
+            <div class="card bg-warning my-3" @click="editar(nota.id)">
               <div class="card-body">
                 <h5 class="card-title">{{ nota.titulo }}</h5>
                 <p v-if="nota.descricao" class="card-text">
@@ -35,6 +35,11 @@ export default {
     notas() {
       return this.$store.state.nota.list;
     }
+  },
+  methods: {
+    editar(id) {
+      this.$router.push(`nota/edit/${id}`);
+    }
   }
 };
 </script>
@@ -42,5 +47,6 @@ export default {
 <style>
   .card {
     min-height: 15rem;
+    cursor: pointer;
   }
 </style>
