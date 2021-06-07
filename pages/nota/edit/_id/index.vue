@@ -1,11 +1,11 @@
 <template>
-  <h1>Editando nota {{ $route.params.id }}</h1>
+  <n-nota :id="$route.params.id"></n-nota>
 </template>
 
 <script>
 export default {
-
-}
+  layout: "home"
+};
 </script>
 
 <style>
